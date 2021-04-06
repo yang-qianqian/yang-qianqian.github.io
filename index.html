@@ -316,6 +316,94 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/2021/04/06/es6/"
+                            aria-label=": es6"
+                        >
+                            es6
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-04-06T20:23:25+08:00">
+	
+		    Apr 06, 2021
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h6 id="1、let-const-var-有什么区别？"><a href="#1、let-const-var-有什么区别？" class="headerlink" title="1、let   const   var 有什么区别？"></a>1、let   const   var 有什么区别？</h6><p>let和const相同点：<br>       1.let和const声明的变量，只在声明所在的块级作用域{}内有效<br>       2.都不支持重复赋值<br>       3.都存在暂时性死区<br>       4.都不存在变量提升，必须声明后使用<br>       5.let和const声明的变量都不属于window，var声明的变量相当于挂在window上</p>
+<p>let和var的区别：<br>      1.在同一个作用域中不能重复声明相同变量<br>      2.无变量提升<br>      3.块级作用域，存在暂时性死区</p>
+<h6 id="2、暂时性死区指的是什么？"><a href="#2、暂时性死区指的是什么？" class="headerlink" title="2、暂时性死区指的是什么？"></a>2、暂时性死区指的是什么？</h6><p>​        在代码块内，使用let命令声明变量之前，该变量都是不可用的，凡是在声明之前就使用就会报错，只能在声            明变量之后再使用。</p>
+<h6 id="3、const定义的变量是否能够修改？"><a href="#3、const定义的变量是否能够修改？" class="headerlink" title="3、const定义的变量是否能够修改？"></a>3、const定义的变量是否能够修改？</h6><p>可以修改，const声明的是一个只读的常量，一旦声明，常量的值就不能改变，对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此<br>等同于常量，但对于复合类型数据（对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），<br>至于它指向的数据结构是不是可变的，就完全不能控制了，因此const声明引用类型的对象的话，值是能改动的，声明基本类型的值就不能改动</p>
+<h6 id="4、es6与es5判断是否完全相等的方法是什么？"><a href="#4、es6与es5判断是否完全相等的方法是什么？" class="headerlink" title="4、es6与es5判断是否完全相等的方法是什么？"></a>4、es6与es5判断是否完全相等的方法是什么？</h6><p>es5比较两个值是否相等，相等运算符（==）严格相等运算符（===）。前者会自动转换数据类型，后者NaN不等于自身，以及+0等于-0<br>es6中中比较两个值是否相等 Object.is（） 与（===）相似，不同之处+0不等于-0，NaN等于自身</p>
+<p>+0 === -0 //true<br>NaN === NaN // false<br>Object.is(+0, -0) // false<br>Object.is(NaN, NaN) // true</p>
+<h6 id="5、es6新增方法-assign，-他在作用是什么？"><a href="#5、es6新增方法-assign，-他在作用是什么？" class="headerlink" title="5、es6新增方法 assign， 他在作用是什么？"></a>5、es6新增方法 assign， 他在作用是什么？</h6><p>合并对象，返回一个新对象，对象的浅拷贝</p>
+<h6 id="6、如何通过assign实现对象拷贝？-他的拷贝是深拷贝还是浅拷贝？为什么？"><a href="#6、如何通过assign实现对象拷贝？-他的拷贝是深拷贝还是浅拷贝？为什么？" class="headerlink" title="6、如何通过assign实现对象拷贝？ 他的拷贝是深拷贝还是浅拷贝？为什么？"></a>6、如何通过assign实现对象拷贝？ 他的拷贝是深拷贝还是浅拷贝？为什么？</h6><p>浅拷贝， 如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用<br>const obj1 = {a:{ b:1 }};<br>const obj2 = Object.assign({},obj1);<br>obj1.a.b = 2<br>obj2.a.b //2<br>1.第一个参数是目标对象，第二个参数是源对象；<br>2.如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。<br>const target = { a: { b:’c’, d:’e’ } }<br>const sourse = { a: { b: ‘hello’ } }<br>Object.assign(target,sourse)<br>//{ a: { b:’hello’ } }<br>3.Object.assign可以用来处理数组，但是会把数组视为对象</p>
+<h6 id="7、let-obj-a-‘a’-b-‘’-只获取对象在key-value"><a href="#7、let-obj-a-‘a’-b-‘’-只获取对象在key-value" class="headerlink" title="7、let obj = {a: ‘a’, b: ‘’}只获取对象在key, value"></a>7、let obj = {a: ‘a’, b: ‘’}只获取对象在key, value</h6><p>Object.keys()<br>Object.values()</p>
+<h6 id="8、this指向都有哪些？"><a href="#8、this指向都有哪些？" class="headerlink" title="8、this指向都有哪些？"></a>8、this指向都有哪些？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">1.作为函数名调用   函数作为全局对象调用，this指向全局对象  指向window  </span><br><span class="line">function  fn()&#123;</span><br><span class="line">	console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">fn()</span><br><span class="line"></span><br><span class="line">2.作为方法调用  对象.函数()  函数作为对象中的一个属性，成为该对象的一个方法，this指向该对象</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">     name:&quot;zz&quot;</span><br><span class="line">     say:function()&#123;</span><br><span class="line">          cosnole.log(this.name)</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.say()    &#x2F;&#x2F;obj</span><br><span class="line">3.使用构造函数调用     使用new调用的函数  this指向创建的实例对象</span><br><span class="line">function Fn()&#123;</span><br><span class="line">      this.name&#x3D;&quot;zz&quot;</span><br><span class="line">&#125;</span><br><span class="line">var aa&#x3D; new Fn()</span><br><span class="line">console.log(aa.name)   &#x2F;&#x2F;lry</span><br><span class="line"></span><br><span class="line">4. apply或call调用 </span><br><span class="line">   自行改变this指向，函数this指向apply或call方法调用时的第一个参数</span><br><span class="line">   var o &#x3D; &#123;</span><br><span class="line">    name:&quot;zz&quot;,</span><br><span class="line">   fn:function()&#123;</span><br><span class="line">         console.log(this.name)    &#x2F;&#x2F;zz</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   var b &#x3D; o.fn;</span><br><span class="line">   b.call(o)   或 b.apply(o)</span><br><span class="line"></span><br><span class="line">5.定时器内部  this指向window </span><br><span class="line">setInterval（function()&#123;</span><br><span class="line">        console.log(this)</span><br><span class="line">&#125;,100）</span><br><span class="line">6.DOM事件处理函数中的this  当函数被当做监听事件处理函数时，this指向触发该事件的元素</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="9、箭头函数在this指向？"><a href="#9、箭头函数在this指向？" class="headerlink" title="9、箭头函数在this指向？"></a>9、箭头函数在this指向？</h6><p>箭头函数没有自己的this，他的this是继承而来，是指向定义它时所处的对象，而不是执行时的对象。</p>
+<h6 id="10、数组解构赋值与对象解构赋值的区别？"><a href="#10、数组解构赋值与对象解构赋值的区别？" class="headerlink" title="10、数组解构赋值与对象解构赋值的区别？"></a>10、数组解构赋值与对象解构赋值的区别？</h6><p>数组的元素是按次序排列的，变量的取值由他的位置决定，而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。</p>
+<h6 id="11、两个数的交换"><a href="#11、两个数的交换" class="headerlink" title="11、两个数的交换"></a>11、两个数的交换</h6><p>​    let a = 1; let b = 2; 输出a=2,b=1;<br>​    [a,b] = [b,a];</p>
+<h6 id="12、字符串方法"><a href="#12、字符串方法" class="headerlink" title="12、字符串方法"></a>12、字符串方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">charAt(下标)  返回指定索引位置处的字符  </span><br><span class="line">charCodeAt（下标）  返回一个整数，代表指定字符的unicode编码，如果指定位置没有字符，将返回NaN</span><br><span class="line">String.fromCharCode（unicode值） 通过unicode值返回一个字符串</span><br><span class="line">indexOf（查找的字符，开始查找的下标） 返回下标，没有返回-1</span><br><span class="line">lastIndexOf(查找的字符，开始查找的下标)   从末尾开始查找下标，返回下标，没有返回-1</span><br><span class="line">split()  分割符  字符串按照指定的字符分割成数组</span><br><span class="line">substring(开始下标,结束下标)   截取  </span><br><span class="line">substr（开始下标，截取的长度） 截取</span><br><span class="line">slice（）截取</span><br><span class="line">concat（）   返回字符串    合并</span><br><span class="line">trim（）  清除字符串两端空格</span><br><span class="line">toLowerCase（）   转换为小写</span><br><span class="line">toUpperCase（ ） 转换为大写</span><br><span class="line">replice（）  字符串替换 </span><br></pre></td></tr></table></figure>
+
+<h6 id="13、es6中新增方法有哪些？"><a href="#13、es6中新增方法有哪些？" class="headerlink" title="13、es6中新增方法有哪些？"></a>13、es6中新增方法有哪些？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">includes()  返回布尔值，判断是否包含某个字符</span><br><span class="line">startWith（）  返回布尔值  判断字符串是否以某个字符串开头</span><br><span class="line">endsWidth（） 返回布尔值  判断字符串是否以某个字符串结尾</span><br><span class="line">repeat（重复次数）  重复一个字符串 </span><br><span class="line">padStart（）   字符串补全长度功能</span><br><span class="line">padEnd（）   字符串补全长度功能</span><br><span class="line">14、es5中数组方法都有哪些？</span><br><span class="line">push（）</span><br><span class="line">unshift（）</span><br><span class="line">pop（）</span><br><span class="line">shift（）</span><br><span class="line">join（）</span><br><span class="line">indexOf()</span><br><span class="line">slice()</span><br><span class="line">concat()</span><br><span class="line">reverse()</span><br><span class="line">Array.isArray()</span><br></pre></td></tr></table></figure>
+
+<h6 id="15、es6中新增数组方法都有哪些？"><a href="#15、es6中新增数组方法都有哪些？" class="headerlink" title="15、es6中新增数组方法都有哪些？"></a>15、es6中新增数组方法都有哪些？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">forEach()</span><br><span class="line">map()</span><br><span class="line">filter()</span><br><span class="line">every()</span><br><span class="line">some()</span><br><span class="line">reduce()</span><br><span class="line">Array.from() 将类数组或者可遍历的对象转成真正的数组</span><br><span class="line">Array.of() </span><br><span class="line">fill()</span><br><span class="line">find()</span><br><span class="line">findIndex()</span><br><span class="line">includes()</span><br><span class="line">flat()</span><br><span class="line">flatMap()</span><br><span class="line">...扩展运算符</span><br><span class="line">keys()</span><br><span class="line">values()</span><br><span class="line">entries()</span><br></pre></td></tr></table></figure>
+
+<h6 id="16、如何判断一个对象是对象，-如何判断一个数组是数组？"><a href="#16、如何判断一个对象是对象，-如何判断一个数组是数组？" class="headerlink" title="16、如何判断一个对象是对象， 如何判断一个数组是数组？"></a>16、如何判断一个对象是对象， 如何判断一个数组是数组？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">instanceof </span><br><span class="line">typeof</span><br></pre></td></tr></table></figure>
+
+<h6 id="17、如何将一个对象转换为数组，-es5、es6在写法分别是什么？"><a href="#17、如何将一个对象转换为数组，-es5、es6在写法分别是什么？" class="headerlink" title="17、如何将一个对象转换为数组， es5、es6在写法分别是什么？"></a>17、如何将一个对象转换为数组， es5、es6在写法分别是什么？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr&#x3D;[ ]</span><br><span class="line">for（var k of Object.keys(obj)）&#123;</span><br><span class="line">      arr1.push(k)</span><br><span class="line">&#125;</span><br><span class="line">let newarr &#x3D; arr.flat()</span><br><span class="line">console.log(newarr)</span><br></pre></td></tr></table></figure>
+
+<h6 id="18、如何判断数组是否包含某个给定的值"><a href="#18、如何判断数组是否包含某个给定的值" class="headerlink" title="18、如何判断数组是否包含某个给定的值"></a>18、如何判断数组是否包含某个给定的值</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array.indexOf()   </span><br><span class="line">               array.includes()</span><br><span class="line">array.find()</span><br></pre></td></tr></table></figure>
+
+<h6 id="19、for-of-与-for-in-有什么区别"><a href="#19、for-of-与-for-in-有什么区别" class="headerlink" title="19、for  of     与  for  in  有什么区别"></a>19、for  of     与  for  in  有什么区别</h6><p>for of  语句在可迭代对象（Array、Map、Set、String、arguments等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句<br>for in 一般用于遍历对象的可枚举属性，以及对象从构造函数原型中继承的属性。对于每个不同的属性，语句都会被执行<br>不建议使用for in 遍历数组，因为输出的顺序不是固定的<br>如果迭代的对象的变量值是null或者undefided，for in 不执行循环体，建议在使用for in 循环之前，先检查该对象的值是不是null或者undefined</p>
+<h6 id="20、filter、map有什么区别"><a href="#20、filter、map有什么区别" class="headerlink" title="20、filter、map有什么区别"></a>20、filter、map有什么区别</h6><p>map() 会根据提供的函数对指定序列做映射。<br>第一个参数function以参数序列中的每一个元素调用function函数，返回包含每次function函数返回值的新列表。<br>filter（） 函数用于过滤序列，过滤掉不符合条件的元素，返回由复合条件元素组成的新列表<br>该接收两个参数，第一个为函数，第二个为序列，序列的每个元素作为参数传递给函数进行判断，然后返回true或false，最后将返回true的元素放到新列表中</p>
+<h6 id="21、-some、-ervery-有什么区别"><a href="#21、-some、-ervery-有什么区别" class="headerlink" title="21、 some、 ervery  有什么区别"></a>21、 some、 ervery  有什么区别</h6><p>some（） 一真即真<br>every（） 一假即假</p>
+<h6 id="22、reduce-的使用语法，-都能实现哪些功能"><a href="#22、reduce-的使用语法，-都能实现哪些功能" class="headerlink" title="22、reduce 的使用语法， 都能实现哪些功能"></a>22、reduce 的使用语法， 都能实现哪些功能</h6><p>reduce（）累加    初始值，当前元素值，当前索引，调用reduce的数组<br>arr.reduce（callback,[initialValue]）<br>callback（执行数组中每个值的函数，包含四个参数）<br>1.previValue（上一次调用回调返回的值，或者是提供的初始值（initialValue））<br>2.currentValue（数组中当前被处理的元素）<br>3.index（当前元素在数组中的索引）<br>4.array （调用reduce的数组）<br>initialValue（作为第一次调用callback的第一个参数）<br>var arr = [1,2,3,4]<br>var sum = arr.reduce(function(prev,cur,index,arr){<br>     console.log(prev,cur,index);<br>    return prev+cur<br>},0)   //0为初始值<br>console.log(arr,sum)</p>
+<h6 id="23、Set-作用"><a href="#23、Set-作用" class="headerlink" title="23、Set 作用"></a>23、Set 作用</h6><p>类似于数组，但是成员的值都是唯一，没有重复 的值（自带去重）</p>
+<h6 id="24、Map-在作用"><a href="#24、Map-在作用" class="headerlink" title="24、Map 在作用"></a>24、Map 在作用</h6><p>类似于对象，也是键值队的集合，但是键的范围不限于字符串，各种类型的值都可以作为键，对象等</p>
+<h6 id="25、说一下对promise在理解"><a href="#25、说一下对promise在理解" class="headerlink" title="25、说一下对promise在理解"></a>25、说一下对promise在理解</h6><p>promise是异步编程的一种解决方案<br>promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）、rejected（已失败）<br>let promise = new Promise（（resolve，reject)=&gt;{<br>     if(false){<br>    setTimeout(()=&gt;{<br>                    resolve(‘成功’)<br>    },1000)<br>    }else{<br>               setTimeout(()=&gt;{<br>                     reject(‘失败’)<br>               },1000)<br>      }<br>}）<br>promise.then((res)=&gt;{       //then（）方法  两个参数（成功回调，失败回调）<br>          console.log(res)<br>},(reject)=&gt;{<br>          console.log(reject)<br>}).catch((err)=&gt;{               //catch（）方法捕获  失败<br>         console.log(err)<br>}).finally(()=&gt;{…})                 //finally（） 方法用于指定不管 promise对象最后状态如何，都会执行的操作</p>
+<h6 id="26、async-await和-promise的区别"><a href="#26、async-await和-promise的区别" class="headerlink" title="26、async  await和  promise的区别"></a>26、async  await和  promise的区别</h6><p>async/await 是写异步代码的新方式，以前的方法有回调函数和Promise；async/await是基于Promise实现的，它不能用于普通的回调函数。<br>async/await与Promise一样，是非阻塞的。async/await是的异步代码看起来像同步代码</p>
+<p>async/await前面多了一个async关键字，await关键字只能用在async定义的函数内，async函数会隐式的返回一个promise，该promise的resolve值就是函数return的值，<br>使用async函数可以让代码简洁很多，不需要想promise一样需要写then，不需要匿名函数处理promise的resolve值，也不需要定义多余的data变量，还避免了的嵌套代码<br>async/await让try/catch可以同时处理同步和异步错误，promise中需要使用.catch，这样错误处理代码更加复杂</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2021/04/06/es6/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/2021/04/06/YANGQIANQIAN/"
                             aria-label=": YANGQIANQIAN"
                         >

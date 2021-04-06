@@ -6,17 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hexo">
-    <title>Archives: 2021/4 - Hexo</title>
+    <title>es6 - Hexo</title>
     <meta name="author" content="John Doe">
     
     
     
-    <script type="application/ld+json">{}</script>
-    <meta property="og:type" content="blog">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/04/index.html">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"John Doe","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"1、let   const   var 有什么区别？let和const相同点：       1.let和const声明的变量，只在声明所在的块级作用域{}内有效       2.都不支持重复赋值       3.都存在暂时性死区       4.都不存在变量提升，必须声明后使用       5.let和const声明的变量都不属于window，var声明的变量相当于挂在window上\nlet和var的区别：      1.在同一个作用域中不能重复声明相同变量      2.无变量提升      3.块级作用域，存在暂时性死区\n2、暂时性死区指的是什么？​        在代码块内，使用let命令声明变量之前，该变量都是不可用的，凡是在声明之前就使用就会报错，只能在声            明变量之后再使用。\n3、const定义的变量是否能够修改？可以修改，const声明的是一个只读的常量，一旦声明，常量的值就不能改变，对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量，但对于复合类型数据（对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了，因此const声明引用类型的对象的话，值是能改动的，声明基本类型的值就不能改动\n4、es6与es5判断是否完全相等的方法是什么？es5比较两个值是否相等，相等运算符（==）严格相等运算符（===）。前者会自动转换数据类型，后者NaN不等于自身，以及+0等于-0es6中中比较两个值是否相等 Object.is（） 与（===）相似，不同之处+0不等于-0，NaN等于自身\n+0 === -0 //trueNaN === NaN // falseObject.is(+0, -0) // falseObject.is(NaN, NaN) // true\n5、es6新增方法 assign， 他在作用是什么？合并对象，返回一个新对象，对象的浅拷贝\n6、如何通过assign实现对象拷贝？ 他的拷贝是深拷贝还是浅拷贝？为什么？浅拷贝， 如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用const obj1 = {a:{ b:1 }};const obj2 = Object.assign({},obj1);obj1.a.b = 2obj2.a.b //21.第一个参数是目标对象，第二个参数是源对象；2.如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。const target = { a: { b:’c’, d:’e’ } }const sourse = { a: { b: ‘hello’ } }Object.assign(target,sourse)//{ a: { b:’hello’ } }3.Object.assign可以用来处理数组，但是会把数组视为对象\n7、let obj = {a: ‘a’, b: ‘’}只获取对象在key, valueObject.keys()Object.values()\n8、this指向都有哪些？123456789101112131415161718192021222324252627282930313233343536371.作为函数名调用   函数作为全局对象调用，this指向全局对象  指向window  function  fn()&#123;\tconsole.log(this)&#125;fn()2.作为方法调用  对象.函数()  函数作为对象中的一个属性，成为该对象的一个方法，this指向该对象var obj &#x3D; &#123;     name:&quot;zz&quot;     say:function()&#123;          cosnole.log(this.name)     &#125;&#125;obj.say()    &#x2F;&#x2F;obj3.使用构造函数调用     使用new调用的函数  this指向创建的实例对象function Fn()&#123;      this.name&#x3D;&quot;zz&quot;&#125;var aa&#x3D; new Fn()console.log(aa.name)   &#x2F;&#x2F;lry4. apply或call调用    自行改变this指向，函数this指向apply或call方法调用时的第一个参数   var o &#x3D; &#123;    name:&quot;zz&quot;,   fn:function()&#123;         console.log(this.name)    &#x2F;&#x2F;zz    &#125;   &#125;   var b &#x3D; o.fn;   b.call(o)   或 b.apply(o)5.定时器内部  this指向window setInterval（function()&#123;        console.log(this)&#125;,100）6.DOM事件处理函数中的this  当函数被当做监听事件处理函数时，this指向触发该事件的元素\n\n\n\n9、箭头函数在this指向？箭头函数没有自己的this，他的this是继承而来，是指向定义它时所处的对象，而不是执行时的对象。\n10、数组解构赋值与对象解构赋值的区别？数组的元素是按次序排列的，变量的取值由他的位置决定，而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。\n11、两个数的交换​    let a = 1; let b = 2; 输出a=2,b=1;​    [a,b] = [b,a];\n12、字符串方法1234567891011121314charAt(下标)  返回指定索引位置处的字符  charCodeAt（下标）  返回一个整数，代表指定字符的unicode编码，如果指定位置没有字符，将返回NaNString.fromCharCode（unicode值） 通过unicode值返回一个字符串indexOf（查找的字符，开始查找的下标） 返回下标，没有返回-1lastIndexOf(查找的字符，开始查找的下标)   从末尾开始查找下标，返回下标，没有返回-1split()  分割符  字符串按照指定的字符分割成数组substring(开始下标,结束下标)   截取  substr（开始下标，截取的长度） 截取slice（）截取concat（）   返回字符串    合并trim（）  清除字符串两端空格toLowerCase（）   转换为小写toUpperCase（ ） 转换为大写replice（）  字符串替换 \n\n13、es6中新增方法有哪些？1234567891011121314151617includes()  返回布尔值，判断是否包含某个字符startWith（）  返回布尔值  判断字符串是否以某个字符串开头endsWidth（） 返回布尔值  判断字符串是否以某个字符串结尾repeat（重复次数）  重复一个字符串 padStart（）   字符串补全长度功能padEnd（）   字符串补全长度功能14、es5中数组方法都有哪些？push（）unshift（）pop（）shift（）join（）indexOf()slice()concat()reverse()Array.isArray()\n\n15、es6中新增数组方法都有哪些？123456789101112131415161718forEach()map()filter()every()some()reduce()Array.from() 将类数组或者可遍历的对象转成真正的数组Array.of() fill()find()findIndex()includes()flat()flatMap()...扩展运算符keys()values()entries()\n\n16、如何判断一个对象是对象， 如何判断一个数组是数组？12instanceof typeof\n\n17、如何将一个对象转换为数组， es5、es6在写法分别是什么？123456let arr&#x3D;[ ]for（var k of Object.keys(obj)）&#123;      arr1.push(k)&#125;let newarr &#x3D; arr.flat()console.log(newarr)\n\n18、如何判断数组是否包含某个给定的值123array.indexOf()                  array.includes()array.find()\n\n19、for  of     与  for  in  有什么区别for of  语句在可迭代对象（Array、Map、Set、String、arguments等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句for in 一般用于遍历对象的可枚举属性，以及对象从构造函数原型中继承的属性。对于每个不同的属性，语句都会被执行不建议使用for in 遍历数组，因为输出的顺序不是固定的如果迭代的对象的变量值是null或者undefided，for in 不执行循环体，建议在使用for in 循环之前，先检查该对象的值是不是null或者undefined\n20、filter、map有什么区别map() 会根据提供的函数对指定序列做映射。第一个参数function以参数序列中的每一个元素调用function函数，返回包含每次function函数返回值的新列表。filter（） 函数用于过滤序列，过滤掉不符合条件的元素，返回由复合条件元素组成的新列表该接收两个参数，第一个为函数，第二个为序列，序列的每个元素作为参数传递给函数进行判断，然后返回true或false，最后将返回true的元素放到新列表中\n21、 some、 ervery  有什么区别some（） 一真即真every（） 一假即假\n22、reduce 的使用语法， 都能实现哪些功能reduce（）累加    初始值，当前元素值，当前索引，调用reduce的数组arr.reduce（callback,[initialValue]）callback（执行数组中每个值的函数，包含四个参数）1.previValue（上一次调用回调返回的值，或者是提供的初始值（initialValue））2.currentValue（数组中当前被处理的元素）3.index（当前元素在数组中的索引）4.array （调用reduce的数组）initialValue（作为第一次调用callback的第一个参数）var arr = [1,2,3,4]var sum = arr.reduce(function(prev,cur,index,arr){     console.log(prev,cur,index);    return prev+cur},0)   //0为初始值console.log(arr,sum)\n23、Set 作用类似于数组，但是成员的值都是唯一，没有重复 的值（自带去重）\n24、Map 在作用类似于对象，也是键值队的集合，但是键的范围不限于字符串，各种类型的值都可以作为键，对象等\n25、说一下对promise在理解promise是异步编程的一种解决方案promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）、rejected（已失败）let promise = new Promise（（resolve，reject)=&gt;{     if(false){    setTimeout(()=&gt;{                    resolve(‘成功’)    },1000)    }else{               setTimeout(()=&gt;{                     reject(‘失败’)               },1000)      }}）promise.then((res)=&gt;{       //then（）方法  两个参数（成功回调，失败回调）          console.log(res)},(reject)=&gt;{          console.log(reject)}).catch((err)=&gt;{               //catch（）方法捕获  失败         console.log(err)}).finally(()=&gt;{…})                 //finally（） 方法用于指定不管 promise对象最后状态如何，都会执行的操作\n26、async  await和  promise的区别async/await 是写异步代码的新方式，以前的方法有回调函数和Promise；async/await是基于Promise实现的，它不能用于普通的回调函数。async/await与Promise一样，是非阻塞的。async/await是的异步代码看起来像同步代码\nasync/await前面多了一个async关键字，await关键字只能用在async定义的函数内，async函数会隐式的返回一个promise，该promise的resolve值就是函数return的值，使用async函数可以让代码简洁很多，不需要想promise一样需要写then，不需要匿名函数处理promise的resolve值，也不需要定义多余的data变量，还避免了的嵌套代码async/await让try/catch可以同时处理同步和异步错误，promise中需要使用.catch，这样错误处理代码更加复杂\n","dateCreated":"2021-04-06T20:23:25+08:00","dateModified":"2021-04-06T20:32:07+08:00","datePublished":"2021-04-06T20:23:25+08:00","description":"","headline":"es6","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/04/06/es6/"},"publisher":{"@type":"Organization","name":"John Doe","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"http://example.com/2021/04/06/es6/"}</script>
+    <meta name="description" content="1、let   const   var 有什么区别？let和const相同点：       1.let和const声明的变量，只在声明所在的块级作用域{}内有效       2.都不支持重复赋值       3.都存在暂时性死区       4.都不存在变量提升，必须声明后使用       5.let和const声明的变量都不属于window，var声明的变量相当于挂在window上 let和va">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="es6">
+<meta property="og:url" content="http://example.com/2021/04/06/es6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、let   const   var 有什么区别？let和const相同点：       1.let和const声明的变量，只在声明所在的块级作用域{}内有效       2.都不支持重复赋值       3.都存在暂时性死区       4.都不存在变量提升，必须声明后使用       5.let和const声明的变量都不属于window，var声明的变量相当于挂在window上 let和va">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-06T12:23:25.000Z">
+<meta property="article:modified_time" content="2021-04-06T12:32:07.555Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
     
@@ -37,6 +41,8 @@
     
 
     
+        
+    
 </head>
 
     <body>
@@ -44,7 +50,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -73,7 +79,7 @@
             <!-- Define author's picture -->
 
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
         
@@ -301,30 +307,22 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2021/04/06/es6/"
-                            aria-label=": es6"
-                        >
-                            es6
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            es6
+        </h1>
+    
+    
+        <div class="post-meta">
     <time datetime="2021-04-06T20:23:25+08:00">
 	
 		    Apr 06, 2021
@@ -333,10 +331,13 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content">
-                    <h6 id="1、let-const-var-有什么区别？"><a href="#1、let-const-var-有什么区别？" class="headerlink" title="1、let   const   var 有什么区别？"></a>1、let   const   var 有什么区别？</h6><p>let和const相同点：<br>       1.let和const声明的变量，只在声明所在的块级作用域{}内有效<br>       2.都不支持重复赋值<br>       3.都存在暂时性死区<br>       4.都不存在变量提升，必须声明后使用<br>       5.let和const声明的变量都不属于window，var声明的变量相当于挂在window上</p>
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h6 id="1、let-const-var-有什么区别？"><a href="#1、let-const-var-有什么区别？" class="headerlink" title="1、let   const   var 有什么区别？"></a>1、let   const   var 有什么区别？</h6><p>let和const相同点：<br>       1.let和const声明的变量，只在声明所在的块级作用域{}内有效<br>       2.都不支持重复赋值<br>       3.都存在暂时性死区<br>       4.都不存在变量提升，必须声明后使用<br>       5.let和const声明的变量都不属于window，var声明的变量相当于挂在window上</p>
 <p>let和var的区别：<br>      1.在同一个作用域中不能重复声明相同变量<br>      2.无变量提升<br>      3.块级作用域，存在暂时性死区</p>
 <h6 id="2、暂时性死区指的是什么？"><a href="#2、暂时性死区指的是什么？" class="headerlink" title="2、暂时性死区指的是什么？"></a>2、暂时性死区指的是什么？</h6><p>​        在代码块内，使用let命令声明变量之前，该变量都是不可用的，凡是在声明之前就使用就会报错，只能在声            明变量之后再使用。</p>
 <h6 id="3、const定义的变量是否能够修改？"><a href="#3、const定义的变量是否能够修改？" class="headerlink" title="3、const定义的变量是否能够修改？"></a>3、const定义的变量是否能够修改？</h6><p>可以修改，const声明的是一个只读的常量，一旦声明，常量的值就不能改变，对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此<br>等同于常量，但对于复合类型数据（对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），<br>至于它指向的数据结构是不是可变的，就完全不能控制了，因此const声明引用类型的对象的话，值是能改动的，声明基本类型的值就不能改动</p>
@@ -374,153 +375,114 @@
 <h6 id="26、async-await和-promise的区别"><a href="#26、async-await和-promise的区别" class="headerlink" title="26、async  await和  promise的区别"></a>26、async  await和  promise的区别</h6><p>async/await 是写异步代码的新方式，以前的方法有回调函数和Promise；async/await是基于Promise实现的，它不能用于普通的回调函数。<br>async/await与Promise一样，是非阻塞的。async/await是的异步代码看起来像同步代码</p>
 <p>async/await前面多了一个async关键字，await关键字只能用在async定义的函数内，async函数会隐式的返回一个promise，该promise的resolve值就是函数return的值，<br>使用async函数可以让代码简洁很多，不需要想promise一样需要写then，不需要匿名函数处理promise的resolve值，也不需要定义多余的data变量，还避免了的嵌套代码<br>async/await让try/catch可以同时处理同步和异步错误，promise中需要使用.catch，这样错误处理代码更加复杂</p>
 
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2021/04/06/es6/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
             
+
+
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2021/04/06/YANGQIANQIAN/"
-                            aria-label=": YANGQIANQIAN"
-                        >
-                            YANGQIANQIAN
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2021-04-06T20:03:09+08:00">
-	
-		    Apr 06, 2021
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>ASDASDASDASDASDASDASDASD</p>
-
-                    
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
                         
-
-
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
                     
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/04/06/YANGQIANQIAN/"
+                    data-tooltip="YANGQIANQIAN"
+                    aria-label="NEXT: YANGQIANQIAN"
+                >
                     
-                        <p>
-                            <a
-                                href="/2021/04/06/YANGQIANQIAN/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
             
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2021/04/06/hello-world/"
-                            aria-label=": Hello World"
-                        >
-                            Hello World
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2021-04-06T18:42:45+08:00">
-	
-		    Apr 06, 2021
-    	
-    </time>
-    
-</div>
-
-            </div>
             
-                <div class="postShorten-content">
-                    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2021/04/06/hello-world/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/04/06/es6/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://example.com/2021/04/06/es6/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=http://example.com/2021/04/06/es6/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
         
         
-        <li class="pagination-number">page 1 of 1</li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
@@ -531,6 +493,151 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2021/04/06/YANGQIANQIAN/"
+                    data-tooltip="YANGQIANQIAN"
+                    aria-label="NEXT: YANGQIANQIAN"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/04/06/es6/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://example.com/2021/04/06/es6/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=http://example.com/2021/04/06/es6/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/04/06/es6/"
+                        aria-label="Share on Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=http://example.com/2021/04/06/es6/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=http://example.com/2021/04/06/es6/"
+                        aria-label="Share on Google+"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
             
         </div>
         
@@ -568,6 +675,8 @@
 
 <!--SCRIPTS END-->
 
+
+    
 
 
 
